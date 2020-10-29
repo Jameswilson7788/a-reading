@@ -1,57 +1,75 @@
 <template>
   <div>
-    <v-charts options="polar"> </v-charts>
+    <v-charts :options="candleStick"></v-charts>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import ECharts from "vue-echarts";
 import "echarts/lib/chart/line";
-import "echarts/lib/component/polar";
+
 export default {
   components: { "v-charts": ECharts },
-  data() {
-    let data = [];
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    convertcsvtojson(csv) {
+      //var csv is the CSV file with headers
+      var lines = csv.split("\n");
 
-    for (let i = 0; i <= 360; i++) {
-      let t = (i / 180) * Math.PI;
-      let r = Math.sin(2 * t) * Math.cos(2 * t);
-      data.push([r, i]);
-    }
+      var result = [];
+
+      // NOTE: If your columns contain commas in their values, you'll need
+      // to deal with those before doing the next step
+      // (you might convert them to &&& or something, then covert them back later)
+      // jsfiddle showing the issue https://jsfiddle.net/
+      var headers = lines[0].split(",");
+
+      for (var i = 1; i < lines.length; i++) {
+        var obj = {};
+        var currentline = lines[i].split(",");
+
+        for (var j = 0; j < headers.length; j++) {
+          obj[headers[j]] = currentline[j];
+        }
+
+        result.push(obj);
+      }
+
+      //return result; //JavaScript object
+      return result; //JSON
+    },
+    async getData() {
+      try {
+        const res = await axios(
+          "https://cors-anywhere.herokuapp.com/https://query1.finance.yahoo.com/v7/finance/download/2330.TW?period1=1601481600&period2=1603900800&interval=1d&events=history&crumb=hP2rOschxO0"
+        );
+        this.data = this.convertcsvtojson(res.data);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+  },
+  data() {
     return {
-      polar: {
-        title: {
-          text: "座標數值軸",
+      candleStick: {
+        xAxis: {
+          data: ["2017-10-24", "2017-10-25", "2017-10-26", "2017-10-27"],
         },
-        legend: {
-          data: ["line"],
-        },
-        polar: {
-          center: ["50%", "54%"],
-        },
-        tooltip: {
-          trigger: "axis",
-          axisPointer: {
-            type: "cross",
-          },
-        },
-        angleAxis: {
-          type: "value",
-          startAngle: 0,
-        },
-        radiusAxis: {
-          min: 0,
-        },
+        yAxis: {},
         series: [
           {
-            coordinateSystem: "polar",
-            name: "line",
-            type: "line",
-            showSymbol: false,
-            data: data,
+            type: "k",
+            data: [
+              [20, 30, 10, 35],
+              [40, 35, 30, 55],
+              [33, 38, 33, 40],
+              [40, 40, 32, 42],
+            ],
           },
         ],
-        animationDuration: 2000,
       },
     };
   },

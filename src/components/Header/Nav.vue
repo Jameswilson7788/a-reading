@@ -12,7 +12,7 @@
           <span class="title">W-Reading</span>
         </div>
         <button class="menu">
-          <ArrowDown style="margin-right: 10px"></ArrowDown>
+          <ArrowDown style=""></ArrowDown>
         </button>
       </div>
     </nav>
@@ -70,5 +70,8 @@ li {
 button {
   background: #ffffff;
   border: 0px;
+}
+button:focus {
+  border: 0;
 }
 </style>
