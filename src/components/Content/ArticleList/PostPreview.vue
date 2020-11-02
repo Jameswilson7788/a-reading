@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="vision">Alpha: V0.0.1</div>
+    <div class="version">Alpha: V0.0.1</div>
     <div v-for="(item, index) in items" :key="index" class="post-preview">
       <router-link :to="{ path: item.url }">
         <div class="content">
@@ -87,10 +87,11 @@ a {
   display: flex;
   width: 98%;
 }
-.vision {
+.version {
   position: fixed;
   top: 0;
   font-size: 10px;
+  opacity: 0.3;
 }
 img {
   margin-left: 1rem;

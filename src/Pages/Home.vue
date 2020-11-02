@@ -12,6 +12,9 @@ import Nav from "../components/Header/Nav.vue";
 import PostPreview from "../components/Content/ArticleList/PostPreview.vue";
 export default {
   components: { Nav, PostPreview },
+  data() {
+    return {};
+  },
 };
 </script>
 

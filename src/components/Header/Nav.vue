@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav>
+    <nav :class="{}" v-show="isOnTop">
       <div class="headline">
         <div class="logo">
           <img
@@ -23,12 +23,28 @@
 import ArrowDown from "./ArrowDown.vue";
 
 export default {
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.onScroll);
+  },
+  methods: {
+    onScroll() {
+      if (window.top.scrollY > 30) {
+        this.isOnTop = false;
+      } else {
+        this.isOnTop = true;
+      }
+    },
+  },
   components: {
     ArrowDown,
   },
 
   data() {
     return {
+      isOnTop: true,
       navList: [
         {
           name: "",
@@ -49,6 +65,9 @@ nav {
   margin: 0;
   padding: 0;
   box-shadow: 0px 1px 2px 0 black;
+}
+.scroll-not-top {
+  position: absolute;
 }
 a {
   text-decoration: none;

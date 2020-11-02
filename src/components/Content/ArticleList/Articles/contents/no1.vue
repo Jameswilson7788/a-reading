@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <span class="vision">Alpha: V0.0.1</span>
+      <span class="version">Alpha: V0.0.1</span>
       <Nav></Nav>
     </div>
     <div class="body">
@@ -48,11 +48,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.vision {
+.version {
   position: fixed;
   top: 0;
   z-index: 999;
-  font-size: 12px;
+  font-size: 10px;
+  opacity: 0.3;
 }
 .body {
   width: 60%;
