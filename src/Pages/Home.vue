@@ -4,16 +4,14 @@
       <Nav></Nav>
     </div>
     <post-preview></post-preview>
-    <stock-view></stock-view>
   </div>
 </template>
 
 <script>
 import Nav from "../components/Header/Nav.vue";
 import PostPreview from "../components/Content/ArticleList/PostPreview.vue";
-import StockView from "../components/Content/StockView.vue";
 export default {
-  components: { Nav, PostPreview, StockView },
+  components: { Nav, PostPreview },
 };
 </script>
 
