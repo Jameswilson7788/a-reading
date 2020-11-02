@@ -71,7 +71,6 @@ article {
 .header {
   height: 80px;
   background: white;
-  border-bottom: 1px solid rgba(196, 196, 196, 0.9);
   margin: 0;
   padding: 0;
   box-shadow: 0px 1px 2px 0 black;
