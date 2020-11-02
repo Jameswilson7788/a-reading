@@ -31,4 +31,4 @@ export const withNavBar = () => ({
   template: '<Nav></Nav>'
 })
 
-export const widthSomething = () => ({})
+export const withArticle = () => ({})
