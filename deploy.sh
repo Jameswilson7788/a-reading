@@ -1,5 +1,5 @@
 set -e
-npm run build
+yarn build
 cd dist
 git init 
 git add -A

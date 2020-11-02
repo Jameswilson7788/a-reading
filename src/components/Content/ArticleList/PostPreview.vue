@@ -2,7 +2,7 @@
   <div>
     <div class="vision">Alpha: V0.0.1</div>
     <div v-for="(item, index) in items" :key="index" class="post-preview">
-      <a :href="item.url">
+      <router-link :to="{ path: item.url }">
         <div class="content">
           <div class="thumbnail">
             <img
@@ -21,7 +21,7 @@
             <li class="time">{{ item.time }}</li>
           </ul>
         </div>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>
@@ -44,6 +44,7 @@ export default {
           url: "./no1",
         },
         {
+          id: 2,
           thumbnail:
             "https://cdn.substack.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6769e05e-08eb-4041-8d2b-68b3e3a2bd99_602x602.jpeg",
           title: "W-Reading-殺死我們的將是飢餓，而不是新冠病毒",
@@ -63,7 +64,7 @@ export default {
 <style lang="scss" scoped>
 a {
   text-decoration: none;
-  color:black;
+  color: black;
 }
 .post-preview {
   width: 60%;

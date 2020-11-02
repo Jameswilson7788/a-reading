@@ -3,7 +3,6 @@ import Home from '../Pages/Home.vue'
 import no1 from '../components/Content/ArticleList/Articles/contents/no1.vue'
 
 export default new VueRouter({
-    mode: 'history',
     routes: [{
         path: '/',
         component: Home,
