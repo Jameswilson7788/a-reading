@@ -57,6 +57,9 @@ export default {
 .body {
   width: 60%;
   margin: auto;
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+  }
 }
 article {
   margin-top: 1rem;
